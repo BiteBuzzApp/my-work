@@ -75,6 +75,10 @@ let computerScore = 0
   }
 
 
+function playGame() {
+    
+
+}
 
 let humanSelection = getHumanChoice()
 let computerSelection = getComputerChoice()
@@ -82,4 +86,3 @@ let computerSelection = getComputerChoice()
 console.log(playRound(computerSelection, humanSelection))
 console.log(computerSelection)
 console.log(humanSelection)
-
