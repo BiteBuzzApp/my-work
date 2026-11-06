@@ -74,15 +74,27 @@ let computerScore = 0
     }
   }
 
-
+//function for the whole game
 function playGame() {
-    
+    let humanSelection = getHumanChoice()
+    let computerSelection = getComputerChoice()
 
+    console.log(playRound(computerSelection, humanSelection))
+
+    if (humanScore === 5) {
+        console.log("game won")
+        console.log("Human: " + humanScore)
+        console.log("Computer: " + computerScore)
+    }
+
+    else if (computerScore === 5) {
+        console.log("game over. you lose.")
+        console.log("Human: " + humanScore)
+        console.log("Computer: " + computerScore)
+    }
+
+    else playGame();
 }
 
-let humanSelection = getHumanChoice()
-let computerSelection = getComputerChoice()
 
-console.log(playRound(computerSelection, humanSelection))
-console.log(computerSelection)
-console.log(humanSelection)
+playGame();
