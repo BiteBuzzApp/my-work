@@ -75,6 +75,8 @@ let computerScore = 0
 
   playerPick.addEventListener("click", (event) => {
 
+    gameResult.textContent = ""
+
     if(event.target.className === "rock"){
         playRound(getComputerChoice(),"rock");
     }
@@ -91,10 +93,15 @@ let computerScore = 0
     
     if (humanScore === 5){
         gameResult.textContent = "You win"
+        humanScore = 0
+         computerScore = 0
     }
 
     else if (computerScore === 5) {
         gameResult.textContent = "you lose"
+        computerScore = 0
+        computerScore = 0
+        
     }
   })
 
