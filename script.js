@@ -20,12 +20,6 @@ function getComputerChoice() {
 
 
 
-// user will pick one radnomly
-
-function getHumanChoice() {
-    let pick = prompt("rock, paper, or scissors?");
-    return pick.toLowerCase()
-}
 
 
 //set score variables
@@ -37,64 +31,79 @@ let computerScore = 0
   function playRound(getComputerChoice, getHumanChoice) {
     if (getHumanChoice === "rock" && getComputerChoice === "scissors") {
        ++humanScore
-        return "You Win! Rock beats Scissors."
+        roundResult.textContent = "You Win! Rock beats Scissors."
     }
     else if (getHumanChoice === "rock" && getComputerChoice === "rock") {
-        return "Tie! Play again."
+        roundResult.textContent = "Tie! Play again."
 
     }
     else if (getHumanChoice === "rock" && getComputerChoice === "paper") {
         ++computerScore
-        return "You lose. Paper beats Rock"
+        roundResult.textContent = "You lose. Paper beats Rock"
     }
 
     else if (getHumanChoice === "scissors" && getComputerChoice === "rock") {
          ++computerScore
-        return "You lose. Rock beats Scissors"
+        roundResult.textContent = "You lose. Rock beats Scissors"
     }
     else if (getHumanChoice === "scissors" && getComputerChoice === "scissors") {
         
-        return "Tie! Play again."
+        roundResult.textContent = "Tie! Play again."
     }
     else if (getHumanChoice === "scissors" && getComputerChoice === "paper") {
         ++humanScore
-        return "You win! Scissors bears Paper."
+        roundResult.textContent = "You win! Scissors bears Paper."
     }
     else if (getHumanChoice === "paper" && getComputerChoice === "scissors") {
         ++computerScore
-        return "You lose. Scissors beats paper."
+        roundResult.textContent = "You lose. Scissors beats paper."
     }
     else if (getHumanChoice === "paper" && getComputerChoice === "paper") {
-        return "Tie! Play again."
+        roundResult.textContent = "Tie! Play again."
 
     }
     else if (getHumanChoice === "paper" && getComputerChoice === "rock") {
         ++humanScore
-        return "You Win! Paper beats rock."
+        roundResult.textContent = "You Win! Paper beats rock."
     }
+
   }
 
-//function for the whole game
-function playGame() {
-    let humanSelection = getHumanChoice()
-    let computerSelection = getComputerChoice()
 
-    console.log(playRound(computerSelection, humanSelection))
+//button selction
+  const playerPick = document.querySelector(".container")
 
-    if (humanScore === 5) {
-        console.log("game won")
-        console.log("Human: " + humanScore)
-        console.log("Computer: " + computerScore)
+  playerPick.addEventListener("click", (event) => {
+
+    if(event.target.className === "rock"){
+        playRound(getComputerChoice(),"rock");
+    }
+
+    else if (event.target.className === "paper"){
+        playRound(getComputerChoice(),"paper");
+    }
+
+    else if (event.target.className === "scissors"){
+        playRound(getComputerChoice(),"scissors");
+    }
+
+    theScore.textContent = "HumanScore: " + humanScore + " Computer Score:" + computerScore;
+    
+    if (humanScore === 5){
+        gameResult.textContent = "You win"
     }
 
     else if (computerScore === 5) {
-        console.log("game over. you lose.")
-        console.log("Human: " + humanScore)
-        console.log("Computer: " + computerScore)
+        gameResult.textContent = "you lose"
     }
+  })
 
-    else playGame();
-}
+  const theScore = document.createElement("p")
+  document.body.appendChild(theScore)
 
+  const roundResult = document.createElement("p")
+  document.body.appendChild(roundResult)
 
-playGame();
+  const gameResult = document.createElement("p")
+  document.body.appendChild(gameResult)
+
