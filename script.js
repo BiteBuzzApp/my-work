@@ -100,7 +100,7 @@ let computerScore = 0
     else if (computerScore === 5) {
         gameResult.textContent = "you lose"
         computerScore = 0
-        computerScore = 0
+        humanScore = 0
         
     }
   })
